@@ -101,3 +101,6 @@ h3 { font-family: var(--h4-font-family); font-size: var(--h4-font-size); font-we
 
 /* Search bar and stat cards: fill white instead of the warm base. */
 .search-field, .stat-card { background: #FFFFFF; }
+
+/* Notification bell: outline icon button filled white. */
+.icon-button--outline { background: #FFFFFF; }

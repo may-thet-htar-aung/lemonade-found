@@ -57,7 +57,7 @@ function Layout({
           </div>
           <div className="topbar__tools">
             <SearchField Placeholder="Search cases, items, people" aria-label="Search" />
-            <IconButton Style="Ghost" aria-label="Notifications, 3 unread" {...{ 'Show badge': true }} />
+            <IconButton Style="Outline" aria-label="Notifications, 3 unread" {...{ 'Show badge': true }} />
             <Avatar Size="Medium" Initials="AC" aria-label="Aye Chan" />
           </div>
         </header>
