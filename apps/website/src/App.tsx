@@ -97,8 +97,8 @@ function Landing() {
         </div>
         <div className="hero__visual">
           <div className="hero__cards">
-            <ItemCard Layout="Grid" Title={foundItems[0].title} Meta={meta(foundItems[0])} href={itemHref(foundItems[0])} />
-            <ItemCard Layout="Grid" Title={foundItems[1].title} Meta={meta(foundItems[1])} href={itemHref(foundItems[1])} />
+            <ItemCard Layout="Grid" Title={foundItems[0].title} Photo={foundItems[0].photo} PhotoAlt={foundItems[0].title} Meta={meta(foundItems[0])} href={itemHref(foundItems[0])} />
+            <ItemCard Layout="Grid" Title={foundItems[1].title} Photo={foundItems[1].photo} PhotoAlt={foundItems[1].title} Meta={meta(foundItems[1])} href={itemHref(foundItems[1])} />
           </div>
           <Callout Type="Privacy" Title="Details stay private" Body="Serial numbers and contents are shown to verified staff only." />
         </div>
@@ -127,7 +127,7 @@ function Landing() {
           </div>
           <div className="grid4">
             {foundItems.slice(0, 4).map((i) => (
-              <ItemCard key={i.id} Layout="Grid" Title={i.title} Meta={meta(i)} Status={i.status} href={itemHref(i)} />
+              <ItemCard key={i.id} Layout="Grid" Title={i.title} Photo={i.photo} PhotoAlt={i.title} Meta={meta(i)} Status={i.status} href={itemHref(i)} />
             ))}
           </div>
         </div>
@@ -247,7 +247,7 @@ function Browse({ initialQuery }: { initialQuery: string }) {
               ) : (
                 <div className="grid3">
                   {results.map((i) => (
-                    <ItemCard key={i.id} Layout="Grid" Title={i.title} Meta={meta(i)} Status={i.status} href={itemHref(i)} />
+                    <ItemCard key={i.id} Layout="Grid" Title={i.title} Photo={i.photo} PhotoAlt={i.title} Meta={meta(i)} Status={i.status} href={itemHref(i)} />
                   ))}
                 </div>
               )}
@@ -273,11 +273,11 @@ function ItemDetails({ id }: { id: string }) {
         </nav>
         <div className="details">
           <div>
-            <div className="photo"><Icon Name="box" Size="3xl" /></div>
+            <div className="photo"><img src={item.photo} alt={item.title} /></div>
             <div className="thumbs">
-              <div><Icon Name="box" Size="lg" /></div>
-              <div><Icon Name="box" Size="lg" /></div>
-              <div><Icon Name="box" Size="lg" /></div>
+              <div><img src={item.photo} alt="" /></div>
+              <div><img src={item.photo} alt="" /></div>
+              <div><img src={item.photo} alt="" /></div>
             </div>
             <Callout Type="Privacy" Title="Photos show the item only" Body="Inside photos and identifying marks are kept for verified staff." />
           </div>
@@ -314,7 +314,7 @@ function ItemDetails({ id }: { id: string }) {
           <h2 className="section__title">Similar items</h2>
           <div className="grid4">
             {similar.map((i) => (
-              <ItemCard key={i.id} Layout="Grid" Title={i.title} Meta={meta(i)} Status={i.status} href={itemHref(i)} />
+              <ItemCard key={i.id} Layout="Grid" Title={i.title} Photo={i.photo} PhotoAlt={i.title} Meta={meta(i)} Status={i.status} href={itemHref(i)} />
             ))}
           </div>
         </div>
@@ -447,7 +447,7 @@ function Claim({ id }: { id: string }) {
         <div className="form-layout" style={{ marginTop: 'var(--spacing-xl)' }}>
           <form className="card stack" onSubmit={onSubmit} noValidate>
             <h3>Item you are claiming</h3>
-            <ItemCard Layout="List" Title={item.title} Meta={meta(item)} Status={item.status} href={itemHref(item)} />
+            <ItemCard Layout="List" Title={item.title} Photo={item.photo} PhotoAlt={item.title} Meta={meta(item)} Status={item.status} href={itemHref(item)} />
             <h3>Prove it is yours</h3>
             <Input name="contents" Type="Multi" Label="What is inside or on it?" Placeholder="Cards, papers, stickers, scratches…" State={error.includes('inside') ? 'Error' : 'Default'} Helper={error.includes('inside') ? error : undefined} />
             <div className="form-grid">
@@ -542,7 +542,7 @@ function Track({ id }: { id: string }) {
             </ol>
           </div>
           <aside className="stack">
-            <ItemCard Layout="List" Title={item.title} Meta={meta(item)} Status={item.status} href={itemHref(item)} />
+            <ItemCard Layout="List" Title={item.title} Photo={item.photo} PhotoAlt={item.title} Meta={meta(item)} Status={item.status} href={itemHref(item)} />
             <div className="card">
               <h3>Handover details</h3>
               <div className="kv"><span>Pickup point</span><span className="locked"><Icon Name="lock" Size="sm" /> Revealed after verification</span></div>

@@ -1,4 +1,5 @@
 import type { StatusBadgeStatus } from '@may_thet_htar_aung/lemonade-design-system';
+import { photoFor } from './images';
 
 export type Item = {
   id: string;
@@ -11,10 +12,12 @@ export type Item = {
   heldAt: string;
   description: string;
   status: StatusBadgeStatus;
+  /** Public photo of the item only, never of private contents. */
+  photo: string;
 };
 
 /** Public listings. Private ownership details are never part of this data. */
-export const items: Item[] = [
+const listings: Omit<Item, 'photo'>[] = [
   {
     id: 'LF-2041',
     title: 'Black leather wallet',
@@ -112,6 +115,8 @@ export const items: Item[] = [
     status: 'Lost',
   },
 ];
+
+export const items: Item[] = listings.map((i) => ({ ...i, photo: photoFor(i.title) }));
 
 export const foundItems = items.filter((i) => i.kind === 'Found');
 export const categories = ['Wallet', 'Electronics', 'Bags', 'Accessories', 'Other'];

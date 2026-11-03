@@ -19,6 +19,7 @@ import {
   type StatusBadgeStatus,
 } from '@may_thet_htar_aung/lemonade-design-system';
 import { claims, featuredCase, handovers, matches, reports, users, venues, weeklyReports } from '@shared/data';
+import { photoFor } from '@shared/images';
 import { useHash } from './useHash';
 
 const go = (to: string) => {
@@ -211,7 +212,7 @@ function Matches() {
           <Callout Type="AI Match" Title="A suggestion, not proof" Body="Approve only after comparing the public details. Ownership is checked at the claim step." />
           <div className="compare">
             <div className="card">
-              <div className="photo"><Icon Name="box" Size="2xl" /></div>
+              <div className="photo"><img src={photoFor(lostName)} alt={lostName} /></div>
               <div className="row row--between"><strong>Lost report · {lostRef}</strong><StatusBadge Status="Lost" /></div>
               <div className="kv"><span>Item</span><span>{lostName}</span></div>
               <div className="kv"><span>Category</span><span>Wallet</span></div>
@@ -220,7 +221,7 @@ function Matches() {
               <div className="kv"><span>Private details</span><span className="locked"><Icon Name="lock" Size="sm" /> Hidden until claim</span></div>
             </div>
             <div className="card">
-              <div className="photo"><Icon Name="box" Size="2xl" /></div>
+              <div className="photo"><img src={photoFor(foundName)} alt={foundName} /></div>
               <div className="row row--between"><strong>Found item · {foundRef}</strong><StatusBadge Status="Found" /></div>
               <div className="kv"><span>Item</span><span>{foundName}</span></div>
               <div className="kv"><span>Category</span><span>Wallet</span></div>

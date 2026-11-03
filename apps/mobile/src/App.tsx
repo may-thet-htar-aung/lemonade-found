@@ -102,11 +102,11 @@ function Home() {
         <>
           <div className="grid2">
             {filtered.slice(0, 2).map((i) => (
-              <ItemCard key={i.id} Layout="Grid" Title={i.title} Meta={meta(i)} Status={i.status} href={itemHref(i)} />
+              <ItemCard key={i.id} Layout="Grid" Title={i.title} Photo={i.photo} PhotoAlt={i.title} Meta={meta(i)} Status={i.status} href={itemHref(i)} />
             ))}
           </div>
           {filtered.slice(2, 3).map((i) => (
-            <ItemCard key={i.id} Layout="List" Title={i.title} Meta={meta(i)} Status={i.status} href={itemHref(i)} />
+            <ItemCard key={i.id} Layout="List" Title={i.title} Photo={i.photo} PhotoAlt={i.title} Meta={meta(i)} Status={i.status} href={itemHref(i)} />
           ))}
         </>
       )}
@@ -138,7 +138,7 @@ function Search() {
       <p className="muted">{results.length} result{results.length === 1 ? '' : 's'}</p>
       <div className="stack">
         {results.map((i) => (
-          <ItemCard key={i.id} Layout="List" Title={i.title} Meta={meta(i)} Status={i.status} href={itemHref(i)} />
+          <ItemCard key={i.id} Layout="List" Title={i.title} Photo={i.photo} PhotoAlt={i.title} Meta={meta(i)} Status={i.status} href={itemHref(i)} />
         ))}
         {results.length === 0 && (
           <div className="card stack">
@@ -214,7 +214,7 @@ function ItemDetails({ id }: { id: string }) {
   return (
     <Phone tab="Search">
       <Header title="Item details" back="search" />
-      <div className="photo"><Icon Name="box" Size="3xl" /></div>
+      <div className="photo"><img src={item.photo} alt={item.title} /></div>
       <div className="stack">
         <StatusBadge Status={item.status} />
         <h1>{item.title}</h1>
@@ -260,7 +260,7 @@ function Claim({ id }: { id: string }) {
         <p className="muted">Step 2 of 3 · Prove it&apos;s you</p>
         <div className="progress" aria-hidden="true"><span data-on="true" /><span data-on="true" /><span /></div>
       </div>
-      <ItemCard Layout="List" Title={item.title} Meta={meta(item)} Status={item.status} href={itemHref(item)} />
+      <ItemCard Layout="List" Title={item.title} Photo={item.photo} PhotoAlt={item.title} Meta={meta(item)} Status={item.status} href={itemHref(item)} />
       <Callout Type="Privacy" Title="Your answers stay private" Body="Only verified staff can see them." />
       <form className="stack" onSubmit={onSubmit} noValidate>
         <Input name="contents" Type="Multi" Label="What is inside or on it?" Placeholder="Cards, papers, stickers…" State={error ? 'Error' : 'Default'} Helper={error || undefined} />
@@ -290,7 +290,7 @@ function Track({ id }: { id: string }) {
         <Header title="Track recovery" />
         <p className="muted">Case {item.id}</p>
       </div>
-      <ItemCard Layout="List" Title={item.title} Meta={meta(item)} Status={item.status} href={itemHref(item)} />
+      <ItemCard Layout="List" Title={item.title} Photo={item.photo} PhotoAlt={item.title} Meta={meta(item)} Status={item.status} href={itemHref(item)} />
       <div className="card">
         <ol className="timeline">
           {recoverySteps.map((s, idx) => (
