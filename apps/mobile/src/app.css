@@ -94,4 +94,4 @@ h3 { font-family: var(--h5-font-family); font-size: var(--h5-font-size); font-we
 }
 
 /* Secondary (outline) button: fill with base so it stays opaque on colored bands. */
-.button--outline { background: #FFFFFF; }
+.button--outline { background: var(--color-neutral-0); }

@@ -97,16 +97,16 @@ h3 { font-family: var(--h4-font-family); font-size: var(--h4-font-size); font-we
 }
 
 /* Secondary (outline) button: fill with base so it stays opaque on colored bands. */
-.button--outline { background: #FFFFFF; }
+.button--outline { background: var(--color-neutral-0); }
 
 /* Search bar and stat cards: fill white instead of the warm base. */
-.search-field, .stat-card { background: #FFFFFF; }
+.search-field, .stat-card { background: var(--color-neutral-0); }
 
 /* Notification bell: outline icon button filled white. */
-.icon-button--outline { background: #FFFFFF; }
+.icon-button--outline { background: var(--color-neutral-0); }
 
 /* Dashboard panels (Reports this week, Needs attention): white background. */
-.panels > .card { background: #FFFFFF; }
+.panels > .card { background: var(--color-neutral-0); }
 
 /* Back office page background: light yellow. */
 body { background: var(--color-lemon-yellow-100); }
