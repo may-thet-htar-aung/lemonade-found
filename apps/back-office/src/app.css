@@ -113,3 +113,6 @@ body { background: var(--color-lemon-yellow-50); }
 
 /* Table rows: fill white. */
 .table { background: var(--color-neutral-0); }
+
+/* Cards (match compare panels, queue items, detail cards): fill white. */
+.card, .queue__item { background: var(--color-neutral-0); }
