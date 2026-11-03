@@ -69,3 +69,12 @@ h3 { font-family: var(--h5-font-family); font-size: var(--h5-font-size); font-we
 
 .photo img { width: 100%; height: 100%; object-fit: cover; border-radius: inherit; display: block; }
 .photo { display: block; overflow: hidden; }
+
+/* Item photos: constrain the box and show the whole item, never crop it. */
+.item-card__photo { background: var(--color-bg-surfacesecondary); }
+.item-card__image { width: 100%; height: 100%; object-fit: contain; }
+.item-card[data-card-layout='Grid'] .item-card__photo,
+.item-card[data-card-layout='Grid Large'] .item-card__photo { width: 100%; aspect-ratio: 4 / 3; }
+.item-card[data-card-layout='List'] .item-card__photo { width: 96px; }
+.photo { background: var(--color-bg-surfacesecondary); }
+.photo img { object-fit: contain; padding: var(--spacing-sm); }
