@@ -104,3 +104,6 @@ h3 { font-family: var(--h4-font-family); font-size: var(--h4-font-size); font-we
 
 /* Notification bell: outline icon button filled white. */
 .icon-button--outline { background: #FFFFFF; }
+
+/* Dashboard panels (Reports this week, Needs attention): white background. */
+.panels > .card { background: #FFFFFF; }
