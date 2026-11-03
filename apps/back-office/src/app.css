@@ -109,4 +109,4 @@ h3 { font-family: var(--h4-font-family); font-size: var(--h4-font-size); font-we
 .panels > .card { background: var(--color-neutral-0); }
 
 /* Back office page background: light yellow. */
-body { background: var(--color-lemon-yellow-100); }
+body { background: var(--color-lemon-yellow-50); }
