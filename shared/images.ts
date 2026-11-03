@@ -1,6 +1,7 @@
 /**
  * Item photos. Real photos for the known categories, hotlinked from Unsplash
  * (free to use, no API key). Each id below was checked to show the right object.
+ * Each category has a few photos so the detail gallery can cycle through them.
  * Anything else falls back to a simple drawn box, so a card is never empty.
  */
 
@@ -8,14 +9,38 @@ const INK = '#292D28';
 const SAND = '#F3F0E6';
 const LEMON = '#F6D84C';
 
-/** Unsplash photo ids, verified by eye to match their label. */
-const UNSPLASH: Record<string, string> = {
-  wallet: 'photo-1627123424574-724758594e93',
-  umbrella: 'photo-1553550814-5ddd97fe5840',
-  phone: 'photo-1511707171634-5f897ff02aa9',
-  glasses: 'photo-1574258495973-f010dfbb5371',
-  backpack: 'photo-1622560480605-d83c853bc5c3',
-  earbuds: 'photo-1590658268037-6bf12165a8df',
+/** Unsplash photo ids per category, verified by eye to match their label. */
+const UNSPLASH: Record<string, string[]> = {
+  wallet: [
+    'photo-1627123424574-724758594e93',
+    'photo-1579014134953-1580d7f123f3',
+    'photo-1628483211662-9bcc692c46dc',
+  ],
+  umbrella: [
+    'photo-1553550814-5ddd97fe5840',
+    'photo-1604560353366-28e44ad06afe',
+    'photo-1668761401578-f66731b79a9c',
+  ],
+  phone: [
+    'photo-1511707171634-5f897ff02aa9',
+    'photo-1523206489230-c012c64b2b48',
+    'photo-1592890288564-76628a30a657',
+  ],
+  glasses: [
+    'photo-1574258495973-f010dfbb5371',
+    'photo-1556306510-31ca015374b0',
+    'photo-1646084081219-1090f72a531c',
+  ],
+  backpack: [
+    'photo-1622560480605-d83c853bc5c3',
+    'photo-1622560480654-d96214fdc887',
+    'photo-1765516833058-c322c800fee1',
+  ],
+  earbuds: [
+    'photo-1590658268037-6bf12165a8df',
+    'photo-1572569511254-d8f925fe2cbb',
+    'photo-1606841837239-c5a1a4a07af7',
+  ],
 };
 
 const unsplash = (id: string, w = 800) =>
@@ -33,14 +58,25 @@ const genericBox =
 
 const FALLBACK = `data:image/svg+xml;utf8,${encodeURIComponent(genericBox)}`;
 
-/** Picks the photo that matches an item's title. */
-export function photoFor(title: string): string {
+function idsFor(title: string): string[] | null {
   const t = title.toLowerCase();
-  if (t.includes('wallet')) return unsplash(UNSPLASH.wallet);
-  if (t.includes('umbrella')) return unsplash(UNSPLASH.umbrella);
-  if (t.includes('phone')) return unsplash(UNSPLASH.phone);
-  if (t.includes('glasses')) return unsplash(UNSPLASH.glasses);
-  if (t.includes('backpack') || t.includes('bag')) return unsplash(UNSPLASH.backpack);
-  if (t.includes('earbuds')) return unsplash(UNSPLASH.earbuds);
-  return FALLBACK;
+  if (t.includes('wallet')) return UNSPLASH.wallet;
+  if (t.includes('umbrella')) return UNSPLASH.umbrella;
+  if (t.includes('phone')) return UNSPLASH.phone;
+  if (t.includes('glasses')) return UNSPLASH.glasses;
+  if (t.includes('backpack') || t.includes('bag')) return UNSPLASH.backpack;
+  if (t.includes('earbuds')) return UNSPLASH.earbuds;
+  return null;
+}
+
+/** The lead photo for an item, used on cards. */
+export function photoFor(title: string): string {
+  const ids = idsFor(title);
+  return ids ? unsplash(ids[0]) : FALLBACK;
+}
+
+/** All photos for an item, used by the detail gallery. */
+export function photosFor(title: string, w = 1000): string[] {
+  const ids = idsFor(title);
+  return ids ? ids.map((id) => unsplash(id, w)) : [FALLBACK];
 }

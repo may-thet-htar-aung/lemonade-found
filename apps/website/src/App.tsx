@@ -1,4 +1,4 @@
-import { useState, type FormEvent, type MouseEvent } from 'react';
+import { useEffect, useState, type FormEvent, type MouseEvent } from 'react';
 import {
   Button,
   Callout,
@@ -15,6 +15,7 @@ import {
   type TopNavPage,
 } from '@may_thet_htar_aung/lemonade-design-system';
 import { categories, featuredCase, foundItems, items, recoverySteps, type Item } from '@shared/data';
+import { photosFor } from '@shared/images';
 import { useHash } from './useHash';
 
 const go = (to: string) => {
@@ -261,6 +262,51 @@ function Browse({ initialQuery }: { initialQuery: string }) {
 
 /* ───────────── W3 · Item details ───────────── */
 
+/** Item photo gallery: auto-advancing loop, prev/next arrows, and thumbnails. */
+function Gallery({ title }: { title: string }) {
+  const photos = photosFor(title);
+  const count = photos.length;
+  const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
+
+  useEffect(() => {
+    if (paused || count < 2) return;
+    const timer = setInterval(() => setIndex((n) => (n + 1) % count), 4000);
+    return () => clearInterval(timer);
+  }, [paused, count]);
+
+  const go = (n: number) => setIndex(((n % count) + count) % count);
+
+  return (
+    <div className="gallery" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
+      <div className="photo gallery__main">
+        <img src={photos[index]} alt={`${title}, photo ${index + 1} of ${count}`} />
+        {count > 1 && (
+          <>
+            <button type="button" className="gallery__arrow gallery__arrow--prev" aria-label="Previous photo" onClick={() => go(index - 1)}>
+              <Icon Name="chevron-left" Size="md" />
+            </button>
+            <button type="button" className="gallery__arrow gallery__arrow--next" aria-label="Next photo" onClick={() => go(index + 1)}>
+              <Icon Name="chevron-right" Size="md" />
+            </button>
+          </>
+        )}
+      </div>
+      {count > 1 && (
+        <div className="thumbs">
+          {photos.map((p, n) => (
+            <div key={p} className={n === index ? 'is-active' : undefined}>
+              <button type="button" aria-label={`Show photo ${n + 1}`} aria-current={n === index} onClick={() => go(n)}>
+                <img src={p} alt="" />
+              </button>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 function ItemDetails({ id }: { id: string }) {
   const item = items.find((i) => i.id === id);
   if (!item) return <NotFound page="Browse" what="item" />;
@@ -273,12 +319,7 @@ function ItemDetails({ id }: { id: string }) {
         </nav>
         <div className="details">
           <div>
-            <div className="photo"><img src={item.photo} alt={item.title} /></div>
-            <div className="thumbs">
-              <div><img src={item.photo} alt="" /></div>
-              <div><img src={item.photo} alt="" /></div>
-              <div><img src={item.photo} alt="" /></div>
-            </div>
+            <Gallery title={item.title} />
             <Callout Type="Privacy" Title="Photos show the item only" Body="Inside photos and identifying marks are kept for verified staff." />
           </div>
           <div className="stack">

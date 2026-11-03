@@ -141,3 +141,20 @@ h4 { font-family: var(--h4-font-family); font-size: var(--h4-font-size); font-we
 .thumbs { display: flex; flex-wrap: wrap; gap: var(--gap-card); }
 .thumbs div { width: 96px; height: 96px; flex: none; }
 .thumbs img { object-fit: cover; object-position: center; padding: 0; }
+
+/* Gallery carousel */
+.gallery__main { position: relative; }
+.gallery__arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 40px; height: 40px; display: grid; place-items: center;
+  border: var(--border-width-1) solid var(--color-border-primary-subtle);
+  border-radius: var(--border-radius-circle);
+  background: var(--color-bg-surfaceprimary); color: var(--color-text-primary);
+  cursor: pointer; box-shadow: var(--elevation-level2, 0 2px 8px rgba(0,0,0,0.12));
+}
+.gallery__arrow:hover { background: var(--color-bg-surfacesecondary); }
+.gallery__arrow--prev { left: var(--spacing-md); }
+.gallery__arrow--next { right: var(--spacing-md); }
+.thumbs button { width: 100%; height: 100%; padding: 0; border: 0; background: none; cursor: pointer; display: block; }
+.thumbs div { border: var(--border-width-2) solid transparent; box-sizing: content-box; }
+.thumbs div.is-active { border-color: var(--color-border-brandgreen-strong); }
