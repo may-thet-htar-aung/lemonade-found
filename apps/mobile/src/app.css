@@ -78,3 +78,6 @@ h3 { font-family: var(--h5-font-family); font-size: var(--h5-font-size); font-we
 .item-card[data-card-layout='List'] .item-card__photo { width: 96px; }
 .photo { background: var(--color-bg-surfacesecondary); }
 .photo img { object-fit: contain; padding: var(--spacing-sm); }
+
+/* Gallery hero: fill the frame. */
+.photo img { object-fit: cover; padding: 0; }

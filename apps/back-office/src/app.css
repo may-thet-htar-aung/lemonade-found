@@ -81,3 +81,6 @@ h3 { font-family: var(--h4-font-family); font-size: var(--h4-font-size); font-we
 .item-card[data-card-layout='Grid Large'] .item-card__photo { width: 100%; aspect-ratio: 4 / 3; }
 .item-card[data-card-layout='List'] .item-card__photo { width: 96px; }
 .photo img { object-fit: contain; padding: var(--spacing-sm); }
+
+/* Compare photos: fill the frame. */
+.photo img { object-fit: cover; padding: 0; }
