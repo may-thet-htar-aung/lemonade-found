@@ -1,4 +1,4 @@
-import { useState, type FormEvent, type ReactNode } from 'react';
+import { useEffect, useState, type FormEvent, type ReactNode } from 'react';
 import {
   Button,
   Callout,
@@ -15,6 +15,7 @@ import {
   type TabBarActive,
 } from '@may_thet_htar_aung/lemonade-design-system';
 import { featuredCase, foundItems, items, recoverySteps, type Item } from '@shared/data';
+import { photosFor } from '@shared/images';
 import { useHash } from './useHash';
 
 const go = (to: string) => {
@@ -208,13 +209,58 @@ function Report() {
 
 /* ───────────── M4 · Item details ───────────── */
 
+/** Item photo gallery: auto-advancing loop, prev/next arrows, and thumbnails. */
+function Gallery({ title }: { title: string }) {
+  const photos = photosFor(title);
+  const count = photos.length;
+  const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
+
+  useEffect(() => {
+    if (paused || count < 2) return;
+    const timer = setInterval(() => setIndex((n) => (n + 1) % count), 4000);
+    return () => clearInterval(timer);
+  }, [paused, count]);
+
+  const go2 = (n: number) => setIndex(((n % count) + count) % count);
+
+  return (
+    <div className="gallery" onPointerDown={() => setPaused(true)}>
+      <div className="photo gallery__main">
+        <img src={photos[index]} alt={`${title}, photo ${index + 1} of ${count}`} />
+        {count > 1 && (
+          <>
+            <button type="button" className="gallery__arrow gallery__arrow--prev" aria-label="Previous photo" onClick={() => go2(index - 1)}>
+              <Icon Name="chevron-left" Size="md" />
+            </button>
+            <button type="button" className="gallery__arrow gallery__arrow--next" aria-label="Next photo" onClick={() => go2(index + 1)}>
+              <Icon Name="chevron-right" Size="md" />
+            </button>
+          </>
+        )}
+      </div>
+      {count > 1 && (
+        <div className="thumbs">
+          {photos.map((p, n) => (
+            <div key={p} className={n === index ? 'is-active' : undefined}>
+              <button type="button" aria-label={`Show photo ${n + 1}`} aria-current={n === index} onClick={() => go2(n)}>
+                <img src={p} alt="" />
+              </button>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 function ItemDetails({ id }: { id: string }) {
   const item = items.find((i) => i.id === id);
   if (!item) return <Missing />;
   return (
     <Phone tab="Search">
       <Header title="Item details" back="search" />
-      <div className="photo"><img src={item.photo} alt={item.title} /></div>
+      <Gallery title={item.title} />
       <div className="stack">
         <StatusBadge Status={item.status} />
         <h1>{item.title}</h1>

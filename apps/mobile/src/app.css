@@ -98,3 +98,21 @@ h3 { font-family: var(--h5-font-family); font-size: var(--h5-font-size); font-we
 
 /* Cards and search bar: fill white. */
 .card, .item-card, .search-field { background: var(--color-neutral-0); }
+
+/* Item gallery carousel (arrows + thumbnails), like the website. */
+.gallery__main { position: relative; }
+.gallery__arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 36px; height: 36px; display: grid; place-items: center;
+  border: var(--border-width-1) solid var(--color-border-primary-subtle);
+  border-radius: var(--border-radius-circle);
+  background: var(--color-neutral-0); color: var(--color-text-primary);
+  cursor: pointer; box-shadow: var(--elevation-level2, 0 2px 8px rgba(0,0,0,0.12));
+}
+.gallery__arrow--prev { left: var(--spacing-xs); }
+.gallery__arrow--next { right: var(--spacing-xs); }
+.thumbs { display: flex; gap: var(--spacing-sm); margin-top: var(--spacing-sm); }
+.thumbs div { width: 64px; height: 64px; flex: none; border-radius: var(--border-radius-lg); overflow: hidden; border: var(--border-width-2) solid transparent; }
+.thumbs div.is-active { border-color: var(--color-border-brandgreen-strong); }
+.thumbs button { width: 100%; height: 100%; padding: 0; border: 0; background: none; cursor: pointer; display: block; }
+.thumbs img { width: 100%; height: 100%; object-fit: cover; }
