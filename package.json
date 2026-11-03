@@ -3,7 +3,9 @@
   "private": true,
   "version": "0.1.0",
   "description": "Lemonade Found: Public Website, Mobile App and Back Office, built on the Lemonade design system.",
-  "workspaces": ["apps/*"],
+  "workspaces": [
+    "apps/*"
+  ],
   "scripts": {
     "dev:website": "npm run dev -w @lemonade-found/website",
     "dev:mobile": "npm run dev -w @lemonade-found/mobile",
@@ -11,6 +13,6 @@
     "build": "npm run build --workspaces"
   },
   "dependencies": {
-    "@may_thet_htar_aung/lemonade-design-system": "0.3.1"
+    "@may_thet_htar_aung/lemonade-design-system": "0.3.2"
   }
 }
