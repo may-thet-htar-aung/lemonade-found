@@ -136,3 +136,8 @@ h4 { font-family: var(--h4-font-family); font-size: var(--h4-font-size); font-we
 .photo { aspect-ratio: 4 / 3; height: auto; }
 .photo img, .thumbs img { object-fit: cover; padding: 0; }
 .thumbs div { height: 96px; }
+
+/* Thumbnails: small squares cropped to the item, not a wide empty strip. */
+.thumbs { display: flex; flex-wrap: wrap; gap: var(--gap-card); }
+.thumbs div { width: 96px; height: 96px; flex: none; }
+.thumbs img { object-fit: cover; object-position: center; padding: 0; }
