@@ -193,3 +193,6 @@ h4 { font-family: var(--h4-font-family); font-size: var(--h4-font-size); font-we
 
 /* Secondary (outline) button: fill with base so it stays opaque on colored bands. */
 .button--outline { background: var(--color-bg-base); }
+
+/* Eyebrow pill: a bit darker than the base pale yellow. */
+.eyebrow { background: var(--color-lemon-yellow-400); }
