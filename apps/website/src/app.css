@@ -196,3 +196,7 @@ h4 { font-family: var(--h4-font-family); font-size: var(--h4-font-size); font-we
 
 /* Eyebrow pill: a bit darker than the base pale yellow. */
 .eyebrow { background: var(--color-lemon-yellow-400); }
+
+/* How it works: white section background, light-yellow cards. */
+#how { background: #FFFFFF; }
+#how .card { background: var(--color-bg-brandyellow-light); }
