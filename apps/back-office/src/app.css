@@ -107,3 +107,6 @@ h3 { font-family: var(--h4-font-family); font-size: var(--h4-font-size); font-we
 
 /* Dashboard panels (Reports this week, Needs attention): white background. */
 .panels > .card { background: #FFFFFF; }
+
+/* Back office page background: light yellow. */
+body { background: var(--color-lemon-yellow-100); }
