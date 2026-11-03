@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@may_thet_htar_aung/lemonade-design-system": "0.3.2",
+    "@may_thet_htar_aung/lemonade-design-system": "0.3.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },

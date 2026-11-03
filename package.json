@@ -13,6 +13,6 @@
     "build": "npm run build --workspaces"
   },
   "dependencies": {
-    "@may_thet_htar_aung/lemonade-design-system": "0.3.2"
+    "@may_thet_htar_aung/lemonade-design-system": "0.3.3"
   }
 }
