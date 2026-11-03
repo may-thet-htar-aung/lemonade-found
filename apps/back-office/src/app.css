@@ -98,3 +98,6 @@ h3 { font-family: var(--h4-font-family); font-size: var(--h4-font-size); font-we
 
 /* Secondary (outline) button: fill with base so it stays opaque on colored bands. */
 .button--outline { background: #FFFFFF; }
+
+/* Search bar and stat cards: fill white instead of the warm base. */
+.search-field, .stat-card { background: #FFFFFF; }
