@@ -81,3 +81,6 @@ h3 { font-family: var(--h5-font-family); font-size: var(--h5-font-size); font-we
 
 /* Gallery hero: fill the frame. */
 .photo img { object-fit: cover; padding: 0; }
+
+/* Status badge: the base component omits horizontal padding, so add it and keep the pill hugging its text. */
+.status-badge { padding-inline: var(--spacing-md); width: fit-content; }
