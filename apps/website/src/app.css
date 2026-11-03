@@ -177,3 +177,16 @@ h4 { font-family: var(--h4-font-family); font-size: var(--h4-font-size); font-we
 .trust h2,
 .cta h2 { color: var(--color-forest-green-500); }
 .step__icon { background: var(--color-lemon-yellow-500); }
+
+/* Figma landing color bands */
+.hero__visual { background: #E3EEE6; }                 /* pale green brand-subtle */
+.eyebrow { color: var(--color-forest-green-500); }     /* green eyebrow text */
+
+/* Trust: dark forest-green band with light text */
+.section--brand { background: var(--color-bg-static-brandgreen); }
+.section--brand h2,
+.section--brand .point { color: var(--color-text-inverse-primary); }
+
+/* CTA: lemon band */
+.section--accent { background: var(--color-lemon-yellow-500); }
+.section--accent h2 { color: var(--color-forest-green-500); }

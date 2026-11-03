@@ -134,7 +134,7 @@ function Landing() {
         </div>
       </section>
 
-      <section className="section section--sand">
+      <section className="section section--brand">
         <div className="wrap trust">
           <div>
             <h2>Your private details stay private</h2>
@@ -156,7 +156,7 @@ function Landing() {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section section--accent">
         <div className="wrap cta">
           <h2>Lost or found something today?</h2>
           <div className="row">
