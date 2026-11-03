@@ -169,3 +169,11 @@ h4 { font-family: var(--h4-font-family); font-size: var(--h4-font-size); font-we
   --color-bg-base: #FFFDF5;          /* Warm Ivory */
   --color-bg-surfacesecondary: #F3F0E6; /* Soft Sand */
 }
+
+/* Figma brand colors: green section headings and bright-yellow step icons. */
+.hero h1,
+.section__title,
+.section__head h2,
+.trust h2,
+.cta h2 { color: var(--color-forest-green-500); }
+.step__icon { background: var(--color-lemon-yellow-500); }
