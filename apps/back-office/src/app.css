@@ -87,3 +87,11 @@ h3 { font-family: var(--h4-font-family); font-size: var(--h4-font-size); font-we
 
 /* Status badge: the base component omits horizontal padding, so add it and keep the pill hugging its text. */
 .status-badge { padding-inline: var(--spacing-md); width: fit-content; }
+
+/* Warm brand backgrounds (app-level override to match the Figma comp).
+   The design system's bg tokens are neutral white/grey; Warm Ivory and Soft
+   Sand are not bound to tokens yet, so set them here until the DS adds them. */
+:root {
+  --color-bg-base: #FFFDF5;          /* Warm Ivory */
+  --color-bg-surfacesecondary: #F3F0E6; /* Soft Sand */
+}
