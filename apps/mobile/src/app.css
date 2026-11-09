@@ -19,17 +19,27 @@ h3 { font-family: var(--h5-font-family); font-size: var(--h5-font-size); font-we
 .phone {
   position: relative;
   max-width: 390px;
-  min-height: 100vh;
+  height: 100vh;
+  height: 100dvh;
   margin: 0 auto;
   background: var(--color-bg-base);
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 @media (min-width: 600px) {
-  .phone { margin: 24px auto; min-height: 844px; border-radius: 36px; box-shadow: var(--elevation-level4, 0 8px 32px rgba(0, 0, 0, 0.16)); overflow: hidden; }
+  .phone { margin: 24px auto; height: min(844px, calc(100dvh - 48px)); border-radius: 36px; box-shadow: var(--elevation-level4, 0 8px 32px rgba(0, 0, 0, 0.16)); }
 }
-.screen { flex: 1; padding: var(--spacing-md) var(--spacing-md) var(--spacing-xl); display: flex; flex-direction: column; gap: var(--spacing-lg); overflow-y: auto; }
-.tabs { position: sticky; bottom: 0; background: var(--color-bg-base); }
+/* The screen scrolls inside the frame; the tab bar stays fixed at the bottom. */
+.screen { flex: 1; min-height: 0; padding: var(--spacing-md) var(--spacing-md) var(--spacing-xl); display: flex; flex-direction: column; gap: var(--spacing-lg); overflow-y: auto; }
+.screen > * { flex-shrink: 0; }
+
+/* List cards: one fixed height, so a tall photo cannot stretch its card.
+   The photo is cropped to fill its 96px column. */
+.item-card[data-card-layout='List'] { height: 112px; }
+.item-card[data-card-layout='List'] .item-card__photo { position: relative; width: 96px; }
+.item-card[data-card-layout='List'] .item-card__image { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; }
+.tabs { flex: none; background: var(--color-bg-base); }
 
 .stack { display: flex; flex-direction: column; gap: var(--gap-card); }
 .row { display: flex; gap: var(--gap-component); align-items: center; }
