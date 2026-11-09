@@ -2,13 +2,13 @@
 
 A lost-and-found platform with three products, all built from the
 [Lemonade design system](https://lemonade-design-system.vercel.app)
-(`@may_thet_htar_aung/lemonade-design-system`, pinned to 0.3.1).
+(`@may_thet_htar_aung/lemonade-design-system`, pinned to 0.3.3).
 
-| Product | Folder | Screens |
-|---|---|---|
-| Public Website | `apps/website` | Landing, browse and search, item details, report form, claim submission, case tracking |
-| Mobile App | `apps/mobile` | Home, report, search results, item details, ownership claim, recovery tracking, return confirmation |
-| Back Office | `apps/back-office` | Dashboard, reports, match review, claims verification, users and venues, handover tracking |
+| Product | Live | Folder | Screens |
+|---|---|---|---|
+| Public Website | [lemonade-found-public-website.vercel.app](https://lemonade-found-public-website.vercel.app) | `apps/website` | Landing, browse and search, item details, report form, claim submission, case tracking |
+| Mobile App | [lemonade-found-mobile-app.vercel.app](https://lemonade-found-mobile-app.vercel.app) | `apps/mobile` | Home, report, search results, item details, ownership claim, recovery tracking, return confirmation |
+| Back Office | [lemonade-found-back-office.vercel.app](https://lemonade-found-back-office.vercel.app) | `apps/back-office` | Dashboard, reports, match review, claims verification, users and venues, handover tracking |
 
 `shared/data.ts` holds the mock data all three apps use, so case LF-2041 (the black leather wallet) runs through every product.
 
